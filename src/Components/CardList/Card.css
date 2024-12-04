@@ -1,0 +1,73 @@
+.card {
+    width: max(300px, 20dvw);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.card_image {
+    display: flex;
+    width: 100%;
+    height: max(300px, 20dvh);
+    justify-content: center;
+    align-items:center;
+}
+
+.card-image {
+    width: max(140px, 18dvw);
+    height: max(140px, 18dvh);
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card-price {
+    font-size: 16px;
+    color: var(--gray);
+    margin: 10px 0;
+}
+
+.add-to-cart {
+    width: 100%;
+    background-color: var(--gray);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid var(--gray);
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart::before {
+    content: "+";
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.add-to-cart:hover {
+    background-color: var(--white);
+    color: var(--gray);
+}
