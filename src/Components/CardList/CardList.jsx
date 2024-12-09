@@ -1,13 +1,43 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Card from "./Card";
 import './CardList.css';
+import {ENV} from "../../Share/share";
 function CardList({products, setProductsCardList}) {
 
-    const [activeCategory, setActiveCategory] = useState("Все");
 
+    const [categories,setCategories] = useState([]);
 
-    const categories = ["Все", "Пицца", "Бургер", "Суши"];
-    const filteredProducts = activeCategory === "Все"
+    let GetAllCategories = async () => {
+        try{
+            await fetch(`${ENV.BASE_URL}/category`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.error) {
+                        console.log(data.error);
+                    }else{
+                        let basecat = {
+                            categoryId:-1,
+                            categoryName: "Все"
+                        }
+                        setCategories([basecat,...data]);
+                    }
+                });
+        }catch (err){
+            console.log(err);
+        }
+
+    }
+    const [activeCategory, setActiveCategory] = useState(-1);
+
+    useEffect(() => {
+        GetAllCategories();
+    },[])
+    const filteredProducts = activeCategory === -1
         ? products
         : products.filter(product => product.categoryId.toString() === activeCategory);
 
@@ -22,10 +52,10 @@ function CardList({products, setProductsCardList}) {
                 {categories.map((category, index) => (
                     <button
                         key={index}
-                        className={`category-button ${activeCategory === category ? "active" : ""}`}
-                        onClick={() => setActiveCategory(category)}
+                        className={`category-button ${activeCategory === category.categoryId ? "active" : ""}`}
+                        onClick={() => setActiveCategory(category.categoryId)}
                     >
-                        {category}
+                        {category.categoryName}
                     </button>
                 ))}
             </div>
