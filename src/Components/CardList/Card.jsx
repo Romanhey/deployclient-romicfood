@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Card.css'; // импортируем стили
 
-function Card({product}) {
+function Card({product,addProductToCard}) {
     const [quantity, setQuantity] = useState(1); // состояние для количества товара
 
     const handleQuantityChange = (event) => {
@@ -19,7 +19,9 @@ function Card({product}) {
                 <h2 className="card-title">{product.productName}</h2>
                 <p className="card-price">${product.price}</p>
 
-                <button className="add-to-cart">Добавить</button>
+                <button className="add-to-cart"
+                    onClick={()=>addProductToCard(product)}
+                >Добавить</button>
             </div>
         </div>
     );

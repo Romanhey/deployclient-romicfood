@@ -9,8 +9,6 @@ html, body {
     line-height: 1.6; /* Улучшает читаемость текста */
 }
 
-
-
 /* Обертка для всего контента */
 .page-container {
     padding: 20px;
@@ -86,7 +84,6 @@ html, body {
     color: var(--white);
 }
 
-
 /* Стили для списка продуктов */
 .products-list {
     width: 100%;
@@ -96,4 +93,24 @@ html, body {
     margin-top: 20px;
     padding: 0 20px;
     box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+    .products-list {
+        gap: 15px; /* Уменьшаем расстояние между карточками */
+    }
+}
+
+@media (max-width: 768px) {
+    .products-list {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 0px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
