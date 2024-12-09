@@ -2,12 +2,13 @@ import './App.css';
 import Header from "./Components/Header/Header";
 import Auth from "./Components/Auth/Auth";
 import {Route, Routes} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Profile} from "./Components/Profile/Profile";
 import Card from "./Components/CardList/Card";
 import CardList from "./Components/CardList/CardList";
 import Cart from "./Components/Cart/Cart";
 import Nav from "./Components/Nav/Nav";
+import {ENV} from "./Share/share";
 
 function App() {
     const [user, setUser] = useState({
@@ -47,6 +48,31 @@ function App() {
         },
     ]);
     const [cartProductsList, setCartProductsList] = useState([...products]);
+
+    let GetAllProducts = async () => {
+        try{
+            await fetch(`${ENV.BASE_URL}/product`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            }).then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.error) {
+                        console.log(data.error);
+                    }else{
+                        setProducts(data);
+                    }
+                });
+        }catch (err){
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+            GetAllProducts();
+    }, []);
 
   return (
     <div className="App">

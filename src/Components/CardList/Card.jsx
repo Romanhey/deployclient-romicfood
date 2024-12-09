@@ -12,7 +12,7 @@ function Card({product,addProductToCard}) {
         <div className="card">
 
             <div className="card_image">
-                <img src={product.image} alt={product.name} className="card-image"/>
+                <img src={product.imageSrc} alt={product.name} className="card-image"/>
             </div>
 
             <div className="card-content">
