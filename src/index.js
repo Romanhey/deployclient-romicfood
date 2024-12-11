@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Router} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter basename={"/deployclient-romicfood"}>
   <React.StrictMode>
+    <BrowserRouter basename="/deployclient-romicfood">
     <App />
-  </React.StrictMode>
     </BrowserRouter>
+  </React.StrictMode>
 );
+
+
+
+

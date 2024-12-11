@@ -5,6 +5,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 function Auth({setUser}) {
 
     const navigaion = useNavigate();
+    const [isError, setIsError] = React.useState(false);
 
     const [isRegister, setIsRegister] = React.useState(false);
     const [isSecondRegisterPage, setIsSecondRegisterPage] = React.useState(false);
@@ -39,11 +40,11 @@ function Auth({setUser}) {
             }).then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    if (data.error) {
-                        console.log(data.error);
-                    }else{
+                    if (data.isLogged) {
                         setUser(data.user);
                         navigaion("/");
+                    } else {
+                        setIsError(true);
                     }
                 });
         } catch (e) {
@@ -92,7 +93,7 @@ function Auth({setUser}) {
         <div className="auth_page active">
             <div className={[`login_Form`, !isRegister ? "active" : ""].join(" ")}>
                 <h1>Вход</h1>
-                <div className="login_form_inputs">
+                <div className={["login_form_inputs",isError ? "error" :""].join(" ")}>
                     <label htmlFor="email">Логин</label>
                     <input
                         type="text"

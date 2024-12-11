@@ -59,21 +59,19 @@
     color: var(--white, #fff); /* Текст становится белым */
 }
 
-/* Основная информация о профиле */
 .profile-main-info {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    gap: 5px; /* Расстояние между строками */
+    gap: 5px;
     width: 100%;
     max-width: 600px;
 
 }
 
-/* Для каждого ряда */
 .info-row {
     display: flex;
-    gap: 5px; /* Расстояние между полями */
+    gap: 5px;
     align-items: center; /* Выравнивание по вертикали */
 }
 
@@ -99,9 +97,32 @@
     text-align: left; /* Текст выравнивается по левому краю */
     color: #333; /* Цвет текста значения */
 }
+.save-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.save-button {
+    background-color: var(--gray, #28a745); /* Зеленая кнопка */
+    color: var(--white, #fff); /* Белый текст */
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Плавный эффект */
+    border: 2px solid var(--gray);
+}
+
+.save-button:hover {
+    background-color: var(--white, #218838); /* Темно-зеленая кнопка */
+    color: var(--gray);
+}
 
 /* Секция "Мои заказы" */
 .orders-section {
+    font-size: 1rem;
     margin-top: 40px; /* Отступ сверху */
     padding: 20px;
     border: 2px solid var(--gray, #333); /* Тёмно-серая рамка */
@@ -128,6 +149,7 @@
     flex-direction: column;
     gap: 10px; /* Расстояние между элементами списка */
     text-align: left;
+    background-color: var(--white);
 }
 
 .orders-section li {
@@ -167,206 +189,122 @@
 .logout-button .icon {
     font-size: 1.2rem; /* Размер иконки */
 }
+/* Стили для input */
+input {
+    width: 100%; /* Поля ввода занимают всю доступную ширину */
+    padding: 10px; /* Внутренний отступ для удобного ввода текста */
+    border: 2px solid var(--gray, #333); /* Темно-серая рамка */
+    border-radius: 8px; /* Скругленные углы */
+    font-size: 1rem; /* Размер шрифта */
+    color: var(--gray, #333); /* Цвет текста */
+    background-color: var(--white, #fff); /* Белый фон */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    outline: none; /* Убираем стандартное выделение */
+    transition: all 0.3s ease; /* Плавный переход для эффектов */
+}
+
+/* Стили для input при фокусе */
+input:focus {
+    border-color: var(--blue, #007bff); /* Меняем цвет рамки на синий при фокусе */
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Подсветка при фокусе */
+    background-color: #f0f8ff; /* Светло-голубой фон */
+}
+
+/* Стили для placeholder */
+input::placeholder {
+    color: var(--gray, #666); /* Цвет текста placeholder */
+    font-style: italic; /* Косой шрифт для стилизации */
+    opacity: 0.8; /* Легкая прозрачность */
+}
 
 /* Адаптивность */
+/* Адаптивность для ширины экрана до 768px */
 @media (max-width: 768px) {
-    .profile-header h1 {
-        font-size: 1.5rem; /* Уменьшаем заголовок */
-    }
 
-    /* Общий стиль страницы профиля */
     .profile-page {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100vh;
-        padding: 20px;
-        background-color: var(--white, #ffffff); /* Белый фон */
-        font-family: 'Poppins', sans-serif;
-        color: var(--gray, #333); /* Темно-серый текст */
-        overflow-y: auto;
-        display: flex;
-        justify-content: center; /* Центрируем страницу */
-        align-items: center; /* Выравниваем по вертикали */
-        flex-flow: column nowrap;
-
-
+        flex-direction: column; /* Колонка вместо строки */
+        padding: 15px; /* Уменьшенные отступы */
     }
 
-    /* Заголовок профиля */
-    .profile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: var(--gray, #333); /* Темно-серый фон */
-        padding: 15px 20px;
-        border-radius: 12px;
-        color: var(--white, #fff); /* Белый текст */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Легкая тень */
+    .profile-header h1 {
+        font-size: 1.3rem; /* Уменьшенный размер шрифта */
+        text-align: center;
     }
 
+    .edit-button {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
     /* Основная информация о профиле */
     .profile-main-info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Выравниваем по левому краю */
-        gap: 20px; /* Расстояние между строками */
-        font-size: 1rem; /* Установим фиксированный размер текста */
-        color: var(--gray, #333); /* Тёмно-серый текст */
-        width: 100%;
-        max-width: 600px; /* Максимальная ширина блока */
-    }
-
-    /* Блоки с рамкой для каждого поля */
-    .profile-field {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #000; /* Черная рамка */
-        border-radius: 8px; /* Скругленные углы */
-        background-color: var(--white, #ffffff); /* Белый фон */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
-    }
-
-    /* Название поля */
-    .field-label {
-        font-weight: bold;
-        color: var(--gray, #333); /* Тёмно-серый цвет */
-        margin-bottom: 5px; /* Отступ снизу */
-    }
-
-    /* Значение поля */
-    .field-value {
-        color: var(--gray, #333); /* Тёмно-серый цвет */
-        padding-left: 10px; /* Отступ слева для значения */
-    }
-
-    /* Секция "Обо мне" */
-    .about-section {
-        margin-top: 40px; /* Отступ сверху */
-        padding: 20px;
-        border: 2px solid var(--gray, #333); /* Тёмно-серая рамка */
-        border-radius: 12px;
-        background-color: var(--white, #ffffff); /* Белый фон */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
-        width: 100%;
-        max-width: 600px; /* Максимальная ширина блока */
+        font-size: 12px;
+        margin-top: 20px;
     }
 
     /* Секция "Мои заказы" */
     .orders-section {
-        margin-top: 40px; /* Отступ сверху */
-        padding: 20px;
-        border: 2px solid var(--gray, #333); /* Тёмно-серая рамка */
-        border-radius: 12px;
-        background-color: var(--white, #ffffff); /* Белый фон */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
-        width: 100%;
-        max-width: 600px; /* Максимальная ширина блока */
+
+        margin-top: 20px; /* Уменьшенный отступ сверху */
+        padding: 15px; /* Уменьшенный внутренний отступ */
     }
 
-    /* Кнопка выхода */
+    .orders-section h2 {
+        font-size: 1.2rem; /* Уменьшенный размер шрифта */
+    }
+
+    .orders-section ul {
+        gap: 5px; /* Уменьшаем расстояние между элементами списка */
+    }
+
+    /* Секция выхода */
     .logout-section {
-        margin-top: 40px; /* Отступ сверху */
-        display: flex;
-        justify-content: center; /* Центрируем кнопку */
+        margin-top: 20px; /* Уменьшенный отступ сверху */
     }
 
     .logout-button {
-        background-color: var(--gray, #333); /* Тёмно-серая кнопка */
-        color: var(--white, #fff); /* Белый текст */
-        border: none;
-        padding: 15px 20px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1rem; /* Установим размер текста */
-        font-weight: bold;
-        transition: all 0.3s ease; /* Плавный эффект */
-        display: flex;
-        align-items: center;
-        gap: 10px; /* Расстояние между иконкой и текстом */
+        font-size: 1rem; /* Сохраняем читаемый размер текста */
+        padding: 10px 15px; /* Уменьшаем внутренний отступ */
+        width: 100%; /* Растягиваем кнопку на всю ширину */
+        max-width: 400px; /* Устанавливаем максимальную ширину */
     }
 
-    .logout-button:hover {
-        background-color: var(--white, #fff); /* Белая кнопка при наведении */
-        color: var(--gray, #333); /* Тёмно-серый текст */
-        border: 2px solid var(--gray, #333); /* Добавляем рамку */
+    /* Поля ввода */
+    input {
+        width: 100%; /* Растягиваем на всю ширину */
+        padding: 10px; /* Сохраняем удобный отступ */
+        font-size: 1rem; /* Удобный размер текста */
     }
 
-    /* Адаптивность */
-    @media (max-width: 768px) {
-        /* Заголовок */
-        .profile-header h1 {
-            font-size: 1.5rem; /* Уменьшаем заголовок */
-        }
-
-        .edit-button {
-            font-size: 0.9rem; /* Уменьшаем кнопку */
-        }
-
-        /* Основная информация о профиле */
-        .profile-main-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; /* Выравниваем по левому краю */
-            gap: 5px; /* Уменьшаем расстояние между строками */
-            font-size: 0.75rem; /* Устанавливаем фиксированный размер текста */
-            color: var(--gray, #333); /* Тёмно-серый цвет */
-            padding: 20px; /* Добавляем отступы */
-            width: 100%;
-        }
-
-        /* Блоки с рамкой для каждого поля */
-        .profile-field {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #000; /* Черная рамка */
-            border-radius: 8px; /* Скругленные углы */
-            background-color: var(--white, #ffffff); /* Белый фон */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
-            display: flex;
-            flex-direction: column; /* Элементы внутри блока будут располагаться по колонке */
-        }
-
-        /* Название поля */
-        .field-label {
-            font-weight: bold;
-            color: var(--gray, #333); /* Тёмно-серый цвет */
-            margin-bottom: 5px; /* Отступ снизу */
-        }
-
-        /* Значение поля */
-        .field-value {
-            color: var(--gray, #333); /* Тёмно-серый цвет */
-            padding-left: 10px; /* Отступ слева для значения */
-        }
-    }
-
-    /* Для десктопной версии */
-    .profile-main-info {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Выравнивание по левому краю */
-        margin-top: 30px; /* Отступ сверху */
-        gap: 5px; /* Расстояние между строками */
-        font-size: 1rem; /* Установим размер текста */
-        color: var(--gray, #333); /* Тёмно-серый цвет */
-        width: 100%;
-        max-width: 800px; /* Максимальная ширина */
-        margin: 0 auto; /* Центрирование на странице */
-    }
-
-    /* Блоки с рамкой для каждого поля */
-    .profile-field {
-        width: 100%;
-        padding: 10px;
-        border: 2px solid #000;
-        border-radius: 8px;
-        background-color: var(--white, #ffffff);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column; /* Располагаем элементы внутри блока по колонке */
+    input:focus {
+        border-color: var(--blue, #007bff); /* Оставляем выделение */
+        background-color: #f0f8ff;
     }
 }
+@media (max-width: 480px) {
+    .profile-page {
+        padding: 5px;
+    }
+    .info-label{
+        flex: 0 0 100px;
+        padding: 8px ;
+    }
+    .info-value {
+        flex: 0 0 1fr;
+    }
+    .profile-main-info{
+        flex-direction: column;
+    }
+    .orders-section li {
+        font-size: 0.8rem; /* Установим размер текста */
+    }
+    .edit-button,
+    .save-button,
+    .logout-button {
+        font-size: 0.6rem;
+    }
+}
+
+
+
 
 

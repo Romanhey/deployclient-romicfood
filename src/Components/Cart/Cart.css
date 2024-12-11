@@ -37,6 +37,7 @@
     height: 50px;
     object-fit: cover;
     border-radius: 4px;
+
 }
 
 .cart_item_details {
@@ -45,9 +46,15 @@
 }
 
 .cart_item_name {
-    font-size: 14px;
-    font-weight: bold;
+    display: inline-block; /* Вместо inline, для работы с размерами */
+    max-width: 150px; /* Максимальная ширина */
+    width: 150px; /* Фиксированная ширина */
+    font-size: 14px; /* Размер текста */
+    font-weight: bold; /* Жирный шрифт */
+    word-wrap: break-word; /* Перенос длинных слов */
+    white-space: normal; /* Разрешить перенос текста на новую строку */
 }
+
 
 .cart_item_price {
     font-size: 14px;
@@ -108,3 +115,32 @@
     display: flex;
     gap: 16px;
 }
+.cart_item_quantity {
+    display: flex; /* Для горизонтального выравнивания */
+    align-items: center; /* Для выравнивания по вертикали */
+    gap: 10px; /* Промежуток между элементами */
+    margin-right: 20px;
+}
+
+.cart_item_quantity_button {
+    background-color: #f0f0f0; /* Цвет фона кнопки */
+    border: none; /* Убираем рамку */
+    padding: 10px 15px; /* Внутренние отступы для кнопок */
+    font-size: 18px; /* Размер текста кнопок */
+    cursor: pointer; /* Меняем курсор на указатель при наведении */
+    border-radius: 5px; /* Скругленные углы */
+    transition: background-color 0.3s; /* Плавный переход для изменения фона */
+}
+
+.cart_item_quantity_button:hover {
+    background-color: #e0e0e0; /* Цвет фона при наведении */
+}
+
+.cart_item_quantity_number {
+    font-size: 18px; /* Размер текста */
+    font-weight: bold; /* Жирный шрифт */
+    width: 40px; /* Ширина для цифры */
+    text-align: center; /* Текст по центру */
+}
+
+

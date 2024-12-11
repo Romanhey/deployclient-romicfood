@@ -96,7 +96,7 @@ html, body {
 }
 @media (max-width: 1024px) {
     .products-list {
-        gap: 15px; /* Уменьшаем расстояние между карточками */
+        gap: 0; /* Уменьшаем расстояние между карточками */
     }
 }
 
@@ -104,7 +104,7 @@ html, body {
     .products-list {
         flex-direction: row;
         justify-content: space-around;
-        gap: 0px;
+        gap: 0;
     }
 }
 

@@ -257,7 +257,23 @@ nav a {
 #profile_button.active {
     display: block;
 }
+
+.cart-count{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: var(--white);
+    border-radius: 50px;
+    padding: 2px 4px;
+    font-size: 10px;
+}
+
 @media (max-width: 1024px){
+
+    .cart-count{
+        transform: translate(50%, -50%);
+    }
 
     .nav_buttons.open {
         top: 45px;
@@ -374,7 +390,10 @@ nav a {
     }
 }
 
+
+
 @media (max-width: 480px) {
+
     nav {
         flex-direction: row;
         justify-content: space-between;
@@ -445,4 +464,6 @@ nav a {
         align-items: flex-start;
     }
 }
+
+
 

@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./Components/Header/Header";
 import Auth from "./Components/Auth/Auth";
 import {Route, Routes} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Profile} from "./Components/Profile/Profile";
 import Card from "./Components/CardList/Card";
 import CardList from "./Components/CardList/CardList";
@@ -12,42 +12,19 @@ import {ENV} from "./Share/share";
 
 function App() {
     const [user, setUser] = useState({
-        id: null,
+        userId: null,
         login: null,
         name: null,
         email: null,
         address: null
     });
 
+    const [searchText,setSearchText] = useState("");
 
+    const targetRef = useRef(null);
 
-    const [products,setProducts] = useState([
-        {
-            productId: 1,
-            productName: "Пицца",
-            price: 10,
-            productDescription: "Delicious pizza",
-            categoryId: 1,
-            image: "https://kykagroup.com/wp-content/uploads/2023/07/IMG-Worlds-of-Adventure.jpg",
-        },
-        {
-            productId: 2,
-            productName: "Бургер",
-            price: 8,
-            productDescription: "Juicy burger",
-            categoryId: 2,
-            image: "https://kykagroup.com/wp-content/uploads/2023/07/IMG-Worlds-of-Adventure.jpg",
-        },
-        {
-            productId: 3,
-            productName: "Сущи",
-            price: 15,
-            productDescription: "Fresh sushi",
-            categoryId: 3,
-            image: "https://kykagroup.com/wp-content/uploads/2023/07/IMG-Worlds-of-Adventure.jpg",
-        },
-    ]);
-    const [cartProductsList, setCartProductsList] = useState([...products]);
+    const [products,setProducts] = useState([]);
+    const [cartProductsList, setCartProductsList] = useState([]);
 
     let GetAllProducts = async () => {
         try{
@@ -70,21 +47,37 @@ function App() {
         }
     }
 
+    const handleInputChange = (e) => {
+        if (targetRef.current) {
+            targetRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     useEffect(() => {
             GetAllProducts();
     }, []);
 
   return (
     <div className="App">
-        <Nav isAuth={user?.id !== null}/>
+        <Nav
+            isAuth={user?.userId !== null}
+            CartProductsCount={cartProductsList.reduce((res, pr) => res + pr.quantity, 0)}
+            products={products}
+            setSearchText={setSearchText}
+            searchText={searchText}
+            scroll={handleInputChange}
+        />
 
         <Routes>
             <Route path="/" element={
                 <>
-                    <Header isAuth={user?.id !== null}/>
+                    <Header isAuth={user?.userId !== null}/>
                     <CardList
+                        targetRef={targetRef}
                         products={products}
                         setProductsCardList={setCartProductsList}
+                        cart={cartProductsList}
+                        searchText={searchText}
                     />
                 </>
             } />
@@ -93,6 +86,7 @@ function App() {
             <Route path={"/cart"} element={
                 <Cart
                     list={cartProductsList}
+                    user={user}
                     setList = {setCartProductsList}
                 />
             } />

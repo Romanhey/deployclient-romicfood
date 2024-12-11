@@ -72,6 +72,9 @@
     padding: 12px 12px 12px 16px;
     margin: 10px 0;
 }
+.login_form_inputs.error input{
+    border-color: red;
+}
 
 .login_form_inputs label{
     font-family: "Roboto", sans-serif;

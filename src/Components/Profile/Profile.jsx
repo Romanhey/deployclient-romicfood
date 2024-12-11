@@ -1,49 +1,200 @@
-import React from "react";
-import "./profile.css"; // Подключаем стили
+import React, {useState} from "react";
+import "./profile.css";
+import {ENV} from "../../Share/share";
+import {useNavigate} from "react-router-dom"; // Подключаем стили
 
-export const Profile = ({user}) => {
+export const Profile = ({ user }) => {
+    const [editEmail, setEditEmail] = useState(user.email || "");
+    const [editLogin, setEditLogin] = useState(user.login || "");
+    const [editName, setEditName] = useState(user.fullName || "");
+    const [editAddress, setEditAddress] = useState(user.address || "");
+    const [isEdit, setIsEdit] = useState(false);
+
+    const handleSave = async () => {
+        // Пример сохранения обновленных данных
+        const updatedData = {
+            fullName: editName,
+            email: editEmail,
+            address: editAddress,
+            login: editLogin
+        };
+        try {
+            const resp = await fetch(`${ENV.BASE_URL}/user/${user.userId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedData)
+            })
+
+            if(resp.ok) {
+                alert("OK")
+            }else{
+                console.log(resp);
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    let history = useNavigate();
+    let [orders, setOrders] = React.useState([]);
+
+    if (user?.userId == null) {
+        history("/auth");
+    }
+
+    React.useEffect( () => {
+        if (user?.userId == null) {
+            history("/auth");
+        }
+         getOrders();
+    }, []);
+
+    let getOrders = async () => {
+        try {
+            const response = await fetch(`${ENV.BASE_URL}/order/user/${user.userId}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                if (Array.isArray(data)) {
+                    setOrders(data);
+                } else {
+                    setOrders([data]);
+                }
+            } else {
+                console.log("Ошибка получения данных о заказах");
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     return (
         <div className="profile-page">
-            {/* Заголовок страницы */}
             <div className="profile-header">
                 <h1>Профиль</h1>
-                <button className="edit-button">Редактировать</button>
+                <button
+                    className="edit-button"
+                    onClick={() => setIsEdit(!isEdit)}
+                >
+                    {isEdit ? "Отменить" : "Редактировать"}
+                </button>
             </div>
 
-            {/* Основная информация о профиле */}
             <div className="profile-main-info">
                 <div className="info-row">
                     <span className="info-label">Полное имя:</span>
-                    <span className="info-value">{user.fullName}</span>
+                    {!isEdit ? (
+                        <span className="info-value">{user.fullName}</span>
+                    ) : (
+                        <input
+                            type="text"
+                            placeholder="Имя"
+                            value={editName}
+                            onChange={(e) => setEditName(e.target.value)}
+                        />
+                    )}
                 </div>
                 <div className="info-row">
                     <span className="info-label">Email:</span>
-                    <span className="info-value">{user.email}</span>
+                    {!isEdit ? (
+                        <span className="info-value">{user.email}</span>
+                    ) : (
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={editEmail}
+                            onChange={(e) => setEditEmail(e.target.value)}
+                        />
+                    )}
                 </div>
                 <div className="info-row">
                     <span className="info-label">Адрес:</span>
-                    <span className="info-value">{user.address}</span>
+                    {!isEdit ? (
+                        <span className="info-value">{user.address}</span>
+                    ) : (
+                        <input
+                            type="text"
+                            placeholder="Адрес"
+                            value={editAddress}
+                            onChange={(e) => setEditAddress(e.target.value)}
+                        />
+                    )}
                 </div>
                 <div className="info-row">
                     <span className="info-label">Логин:</span>
-                    <span className="info-value">{user.login}</span>
+                    {!isEdit ? (
+                        <span className="info-value">{user.login}</span>
+                    ) : (
+                        <input
+                            type="text"
+                            placeholder="Логин"
+                            value={editLogin}
+                            onChange={(e) => setEditLogin(e.target.value)}
+                        />
+                    )}
                 </div>
+
             </div>
+
+            {/* Кнопка сохранения */}
+            {isEdit && (
+                <div className="save-button-container">
+                    <button className="save-button" onClick={handleSave}>
+                        Сохранить
+                    </button>
+                </div>
+            )}
+
             {/* Секция "Мои заказы" */}
             <div className="orders-section">
                 <h2>Мои заказы</h2>
-                <ul>
-                    <li>Пицца "Маргарита" - 12.11.2024</li>
-                    <li>Чизкейк - 10.11.2024</li>
-                    <li>Капучино - 08.11.2024</li>
-                </ul>
+                {/* Проверяем, если заказов нет */}
+                {orders && orders.length > 0 ? (
+                    <ul>
+                        {orders.map((order, index) => (
+                            <li key={index}>
+                                <div className="order-row">
+                                    <span className="order-label">Дата заказа:</span>
+                                    <span className="order-value">
+                            {new Date(order.orderDate).toLocaleDateString()}
+                        </span>
+                                </div>
+                                <div className="order-row">
+                                    <span className="order-label">Статус:</span>
+                                    <span className="order-value">{order.status}</span>
+                                </div>
+                                <div className="order-row">
+                                    <span className="order-label">Сумма:</span>
+                                    <span className="order-value">{order.totalPrice} ₽</span>
+                                </div>
+                                <div className="order-row">
+                                    <span className="order-label">Товары:</span>
+                                    <span className="order-value">
+                            {order.orderProducts.map((product, index) => (
+                                <span key={index}>{product.productName}</span>
+                            ))}
+                        </span>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    // Если заказов нет
+                    <p>У вас еще нет заказов</p>
+                )}
             </div>
+
 
             {/* Кнопка выхода */}
             <div className="logout-section">
-                <button className="logout-button">
-                    Выйти из аккаунта
-                </button>
+                <button className="logout-button">Выйти из аккаунта</button>
             </div>
         </div>
     );

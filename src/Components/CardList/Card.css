@@ -10,20 +10,23 @@
     display: flex;
     flex-direction: column;
     padding: 8px; /* Общие отступы */
+    height: 100%; /* Растягиваем карточку по всей высоте */
 }
 
 .card_image {
     display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 200px; /* Фиксированная высота для блока изображения */
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .card-image {
     width: 100%;
-    max-height: 300px;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover; /* Изображение обрезается по пропорциям блока */
     border-radius: 8px;
 }
 
@@ -32,10 +35,11 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 10px;
+    flex-grow: 1; /* Заполнение оставшегося пространства */
 }
 
 .card-title {
-    font-size: 16px;
+    font-size: clamp(14px, 2.5vw, 18px); /* Размер изменяется от 14px до 18px */
     font-weight: bold;
     color: #333;
     margin: 0;
@@ -44,7 +48,7 @@
 }
 
 .card-price {
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 16px); /* Размер изменяется от 12px до 16px */
     color: #555;
     margin: 0;
     padding-left: 8px; /* Добавляем отступ слева */
@@ -52,23 +56,24 @@
 }
 
 .add-to-cart {
+    font-size: clamp(14px, 2vw, 18px); /* Размер изменяется от 14px до 18px */
     width: 100%;
     background-color: var(--gray);
     color: white;
     padding: 10px 20px;
     border-radius: 12px;
     cursor: pointer;
-    font-size: 16px;
     border: 1px solid var(--gray);
     transition: background-color 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: auto; /* Кнопка фиксируется внизу */
 }
 
 .add-to-cart::before {
     content: "+";
-    font-size: 20px;
+    font-size: clamp(18px, 2.5vw, 24px); /* Размер изменяется от 18px до 24px */
     margin-right: 10px;
 }
 
@@ -76,51 +81,3 @@
     background-color: var(--white);
     color: var(--gray);
 }
-@media (max-width: 480px) {
-    .card {
-        flex-direction: row; /* В строку */
-        align-items: center; /* Выравнивание по центру */
-        padding: 10px;
-        gap: 10px; /* Расстояние между элементами */
-    }
-
-    .card_image {
-        width: 40%; /* Изображение занимает 40% ширины карточки */
-        margin-bottom: 0; /* Убираем нижний отступ */
-    }
-
-    .card-image {
-        width: 100%;
-        height: auto;
-        max-height: 120px; /* Ограничиваем высоту изображения */
-        object-fit: cover; /* Сохранение пропорций */
-    }
-
-    .card-content {
-        width: 60%; /* Контент занимает оставшиеся 60% */
-        flex-direction: column; /* Составляющие контента в столбик */
-        gap: 5px; /* Уменьшаем расстояние между заголовком, ценой и кнопкой */
-        text-align: left;
-    }
-
-    .card-title {
-        font-size: 14px; /* Уменьшаем размер шрифта */
-        padding: 0; /* Убираем лишние отступы */
-        margin: 0;
-    }
-
-    .card-price {
-        font-size: 12px; /* Уменьшаем размер шрифта для цены */
-        color: #888; /* Более легкий оттенок */
-        padding: 0;
-        margin: 0;
-    }
-
-    .add-to-cart {
-        width: auto; /* Убираем фиксированную ширину */
-        font-size: 14px; /* Меньший текст */
-        padding: 8px 12px; /* Более компактные отступы */
-        border-radius: 8px; /* Более мягкие углы */
-    }
-}
-

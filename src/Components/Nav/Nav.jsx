@@ -5,7 +5,8 @@ import {FiShoppingCart} from "react-icons/fi";
 import {NavLink, useNavigate} from "react-router-dom";
 import "./../Header/header.css"
 
-function Nav({isAuth}) {
+function Nav({scroll,isAuth,CartProductsCount,setSearchText,searchText}) {
+
     let history = useNavigate();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,24 +23,21 @@ function Nav({isAuth}) {
             </div>
             <div className="navigation">
                 <div className="nav_search">
-                    <input type="text" placeholder="Search"/>
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        value={searchText}
+                        onChange={(e) => {
+                            setSearchText(e.target.value);
+                            scroll();
+                        }}
+                    />
                     <img src={`${process.env.PUBLIC_URL}/img/icons-reach.svg`} alt="search icon"/>
                 </div>
                 <div className={`nav_buttons ${isMenuOpen ? 'open' : ''}`}>
                     <a href="">Сообщество</a>
                     <a href="">Ресурсы</a>
                     <a href="">Контакты</a>
-                </div>
-                <a
-                    id="cart_button"
-                    className="cart-icon"
-                    onClick={() => history("/cart")}
-                >
-                    <FiShoppingCart
-                        style={{cursor: "pointer"}}
-                    />
-                </a>
-                <div className={`nav_buttons 0{menuOpen ? 'open' : ''}`}>
                     <div className="nav_profile">
                         <NavLink
                             to="/profile"
@@ -56,6 +54,21 @@ function Nav({isAuth}) {
                             Войти
                         </NavLink>
                     </div>
+                </div>
+                <a
+                    id="cart_button"
+                    className="cart-icon"
+                    onClick={() => history("/cart")}
+                >
+                    <FiShoppingCart
+                        style={{cursor: "pointer"}}
+                    />
+                    {CartProductsCount > 0 && (
+                        <span className="cart-count">{CartProductsCount}</span>
+                    )}
+                </a>
+                <div className={`nav_buttons 0{menuOpen ? 'open' : ''}`}>
+
                 </div>
             </div>
 

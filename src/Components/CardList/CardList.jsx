@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Card from "./Card";
 import './CardList.css';
 import {ENV} from "../../Share/share";
-function CardList({products, setProductsCardList}) {
+function CardList({targetRef,searchText,cart,products, setProductsCardList}) {
 
 
     const [categories,setCategories] = useState([]);
@@ -37,12 +37,14 @@ function CardList({products, setProductsCardList}) {
     useEffect(() => {
         GetAllCategories();
     },[])
+    console.log(activeCategory)
     const filteredProducts = activeCategory === -1
         ? products
-        : products.filter(product => product.categoryId.toString() === activeCategory);
+        : products.filter(product => product.categoryId === activeCategory);
 
+    const seachProducts = searchText === "" ? filteredProducts : filteredProducts.filter(product => product.productName.toLowerCase().includes(searchText.toLowerCase()));
     return (
-        <div className="page-container">
+        <div className="page-container" ref={targetRef}>
             <div id = "menu"><h1 className="menu-title">Меню</h1></div>
             <div className="menu-quote">
                 <span>“Cibus est vita.”</span>
@@ -51,6 +53,7 @@ function CardList({products, setProductsCardList}) {
             <div className="categories">
                 {categories.map((category, index) => (
                     <button
+
                         key={index}
                         className={`category-button ${activeCategory === category.categoryId ? "active" : ""}`}
                         onClick={() => setActiveCategory(category.categoryId)}
@@ -60,15 +63,41 @@ function CardList({products, setProductsCardList}) {
                 ))}
             </div>
             <div className="products-list">
-                {filteredProducts.map((product) => (
+                {searchText === "" ? filteredProducts.map((product) => (
                     <Card
                         product={product}
                         key={product.productId}
                         addProductToCard={()=>{
-                            setProductsCardList((prev) => [...prev, product]);
+                            var index = cart.length !== 0 ? cart.findIndex((item)=>item.product.productId === product.productId) : -1;
+                            if(index !== -1){
+                                let newCart = [...cart];
+                                newCart[index].quantity++;
+                                setProductsCardList(newCart);
+                            }
+                            else{
+                                setProductsCardList([...cart,{product:product,quantity:1}])
+                            }
                         }}
                     />
-                ))}
+                )):(
+                    seachProducts.map((product) => (
+                        <Card
+                            product={product}
+                            key={product.productId}
+                            addProductToCard={()=>{
+                                var index = cart.length !== 0 ? cart.findIndex((item)=>item.product.productId === product.productId) : -1;
+                                if(index !== -1){
+                                    let newCart = [...cart];
+                                    newCart[index].quantity++;
+                                    setProductsCardList(newCart);
+                                }
+                                else{
+                                    setProductsCardList([...cart,{product:product,quantity:1}])
+                                }
+                            }}
+                        />
+                    ))
+                )}
             </div>
         </div>
     );
