@@ -9,6 +9,9 @@ import CardList from "./Components/CardList/CardList";
 import Cart from "./Components/Cart/Cart";
 import Nav from "./Components/Nav/Nav";
 import {ENV} from "./Share/share";
+import ProductMenu from "./Components/ProductMenu/ProductMenu";
+import AdminMenu from "./Components/Admin/AdminMenu";
+import ErrorPage from "./Components/ErrorPage/ErrorPage";
 
 function App() {
     const [user, setUser] = useState({
@@ -16,7 +19,8 @@ function App() {
         login: null,
         name: null,
         email: null,
-        address: null
+        address: null,
+        isAdmin: false
     });
 
     const [searchText,setSearchText] = useState("");
@@ -25,6 +29,8 @@ function App() {
 
     const [products,setProducts] = useState([]);
     const [cartProductsList, setCartProductsList] = useState([]);
+
+    const [productMenu, setProductMenu] = useState({});
 
     let GetAllProducts = async () => {
         try{
@@ -78,7 +84,17 @@ function App() {
                         setProductsCardList={setCartProductsList}
                         cart={cartProductsList}
                         searchText={searchText}
+                        setProductMenu={setProductMenu}
                     />
+
+                    <ProductMenu
+                        product={productMenu}
+                        setProductMenu={setProductMenu}
+                        isAdmin={user.isAdmin}
+                    />
+
+                    {//TODO: contacts
+                    }
                 </>
             } />
             <Route path="/auth" element={<Auth setUser={setUser}/>} />
@@ -90,6 +106,9 @@ function App() {
                     setList = {setCartProductsList}
                 />
             } />
+            <Route path={"/admin"} element={<AdminMenu user={user}/>} />
+            <Route path="*" element={<ErrorPage/>} />
+
         </Routes>
 
     </div>

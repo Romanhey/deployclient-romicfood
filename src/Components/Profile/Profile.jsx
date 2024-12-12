@@ -8,6 +8,7 @@ export const Profile = ({ user }) => {
     const [editLogin, setEditLogin] = useState(user.login || "");
     const [editName, setEditName] = useState(user.fullName || "");
     const [editAddress, setEditAddress] = useState(user.address || "");
+    const [editPassword, setEditPassword] = useState( "");
     const [isEdit, setIsEdit] = useState(false);
 
     const handleSave = async () => {
@@ -16,7 +17,8 @@ export const Profile = ({ user }) => {
             fullName: editName,
             email: editEmail,
             address: editAddress,
-            login: editLogin
+            login: editLogin,
+            password: editPassword
         };
         try {
             const resp = await fetch(`${ENV.BASE_URL}/user/${user.userId}`, {
@@ -140,6 +142,18 @@ export const Profile = ({ user }) => {
                         />
                     )}
                 </div>
+                    {isEdit && (
+                        <div className="info-row">
+                            <span className="info-label">Пароль:</span>
+                            <input
+                                type="password"
+                                placeholder="Пароль"
+                                value={editPassword}
+                                onChange={(e) => setEditPassword(e.target.value)}
+                            />
+                        </div>
+                    )}
+
 
             </div>
 
@@ -178,7 +192,7 @@ export const Profile = ({ user }) => {
                                     <span className="order-label">Товары:</span>
                                     <span className="order-value">
                             {order.orderProducts.map((product, index) => (
-                                <span key={index}>{product.productName}</span>
+                                <span key={index}>{product.productName} x {product.quantity}</span>
                             ))}
                         </span>
                                 </div>

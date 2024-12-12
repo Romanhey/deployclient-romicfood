@@ -2,8 +2,7 @@ import React, {useEffect, useState} from "react";
 import Card from "./Card";
 import './CardList.css';
 import {ENV} from "../../Share/share";
-function CardList({targetRef,searchText,cart,products, setProductsCardList}) {
-
+function CardList({targetRef,searchText,cart,products, setProductsCardList,setProductMenu}) {
 
     const [categories,setCategories] = useState([]);
 
@@ -78,6 +77,7 @@ function CardList({targetRef,searchText,cart,products, setProductsCardList}) {
                                 setProductsCardList([...cart,{product:product,quantity:1}])
                             }
                         }}
+                        setProductMenu={setProductMenu}
                     />
                 )):(
                     seachProducts.map((product) => (
@@ -95,6 +95,7 @@ function CardList({targetRef,searchText,cart,products, setProductsCardList}) {
                                     setProductsCardList([...cart,{product:product,quantity:1}])
                                 }
                             }}
+                            setProductMenu={setProductMenu}
                         />
                     ))
                 )}

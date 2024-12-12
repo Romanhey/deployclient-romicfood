@@ -1,0 +1,194 @@
+.admin-menu {
+    position:absolute;
+    left: 0;
+    top: 0;
+
+    width: 100dvw;
+    z-index: 4;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.admin-menu h1 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.admin-menu h2 {
+    color: #495057;
+    margin-top: 20px;
+}
+
+.admin-menu button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+}
+.admin-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+.admin-menu button:hover {
+    background-color: #0056b3;
+}
+
+.admin-menu input{
+    margin: 10px;
+    width: 50%;
+}
+
+.admin-menu input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 8px;
+}
+
+.admin-menu table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 20px auto;
+
+}
+
+.admin-menu table th, .admin-menu table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.admin-menu table th {
+    background-color: #f1f3f5;
+    color: #343a40;
+    font-weight: bold;
+}
+
+.admin-menu table td {
+    background-color: white;
+}
+
+.admin-menu table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.admin-menu table td button {
+    background-color: #28a745;
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.admin-menu table td button:last-child {
+    background-color: #dc3545;
+}
+
+.admin-menu table td button:hover {
+    opacity: 0.9;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content{
+    position: relative;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: max(300px,30dvw);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.modal-content h2{
+    margin-bottom: 20px;
+}
+
+.modal-content button{
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}
+
+.modal-content input{
+    margin: 10px;
+    width: 80%;
+}
+
+.modal-content input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 8px;
+}
+
+/* Для адаптивности на мобильных устройствах */
+@media (max-width: 768px) {
+    .admin-menu {
+        padding: 10px;
+    }
+
+    .admin-menu table th, .admin-menu table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .admin-menu button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .admin-menu input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

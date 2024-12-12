@@ -22,19 +22,24 @@ function Cart({list,setList,user}) {
         }
 
         try {
+            var data = {
+
+                "customerId": user.userId,
+                "orderDate": (new Date()).toISOString(),
+                "status": 0,
+                "totalPrice": list.reduce((total, item) => total + item.product.price*item.quantity, 0),
+                "productIds": list.map(item => ({
+                    "productId": item.product.productId,
+                    "quantity": item.quantity
+                }))
+            }
+            console.log(data)
             await fetch(`${ENV.BASE_URL}/order`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({
-
-                    "customerId": user.userId,
-                    "orderDate": (new Date()).toISOString(),
-                    "status": 0,
-                    "totalPrice": list.reduce((total, item) => total + item.price, 0),
-                    "productIds": list.map(item => item.productId)
-                })
+                body: JSON.stringify(data)
             }).then(res => {
                 if(res.status === 200){
                     alert("Заказ оформле успешно");
