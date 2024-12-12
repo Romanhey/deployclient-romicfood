@@ -24,8 +24,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: max(calc(var(--index)*17) , 400px);
-    height: max(calc(var(--index)*15),500px);
+    width: max(calc(var(--index)*17) , 350px);
+    height: max(calc(var(--index)*15),460px);
     background-color: var(--white);
     border-radius: 20px;
     box-shadow: 0 32px 64px -12px #2d3643;
@@ -49,10 +49,10 @@
 }
 
 .login_Form h1{
-    margin-top: 20px;
-    font-family: "Roboto", sans-serif;
+    margin-top: 1px;
+    font-family: solid, "Roboto", sans-serif;
     font-weight: 300;
-    font-size: 36px;
+    font-size: 30px;
     color: #2B3241;
 }
 
@@ -81,7 +81,7 @@
     font-weight: 300;
     font-size: 16px;
     color: #2B3241;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 .login_form_buttons {
     width: 80%;
@@ -261,6 +261,69 @@
     color: var(--blue);
     text-decoration: none;
 }
-@media (max-width: 1024px) {
+@media (max-width: 780px) {
+    .login_Form{
+        width: max(calc(var(--index)*17) , 320px);
+        height: max(calc(var(--index)*15),380px);
+        padding: 20px;
+    }
+    .login_Form h1{
+        font-size: 28px;
+    }
+    .login_form_inputs input{
+        height: 50px;
+        padding: 10px 10px 10px 14px;
+        margin: 2px 0;
+    }
+    .login_form_inputs label{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .login_form_buttons button{
+        height: 50px;
+        font-size: 14px;
+    }
+    .login_form_buttons p{
+        font-size: 14px;
+        margin-top: 10px;
+    }
 
+    .login_form_buttons p a {
+        font-size: 14px;
+    }
+}
+@media (max-width: 480px) {
+    .login_Form{
+        width: max(calc(var(--index)*17) , 280px);
+        height: max(calc(var(--index)*15),300px);
+        padding: 6px;
+    }
+    .login_Form h1{
+        margin-top: 5px;
+        font-size: 24px;
+    }
+    .login_form_inputs input{
+        font-size: 12px;
+        border-radius: 8px;
+        height: 40px;
+        padding: 8px 8px 8px 12px;
+        margin: 0 0;
+    }
+    .login_form_inputs label{
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    .login_form_buttons button{
+        border-radius: 8px;
+        height: 40px;
+        font-size: 12px;
+    }
+    .login_form_buttons p{
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .login_form_buttons p a {
+        font-size: 12px;
+    }
 }

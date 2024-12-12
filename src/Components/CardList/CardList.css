@@ -43,11 +43,36 @@ html, body {
 }
 
 /* Горизонтальный список категорий */
+/* Горизонтальный список категорий */
 .categories {
     display: flex;
     justify-content: center;
-    gap: 10px;
     margin-bottom: 20px;
+    gap: 10px;
+    flex-wrap: wrap; /* Добавляем перенос элементов */
+    padding: 0 0; /* Добавляем отступы по бокам */
+}
+
+/* Медиа-запрос для экранов шириной 480px и меньше */
+@media (max-width: 480px) {
+
+    .category-button {
+        font-size: calc(var(--index) * 0.8); /* Можно немного уменьшить размер шрифта */
+        padding: 8px 12px; /* Можно немного уменьшить padding */
+        flex: 0 1 auto; /* Позволяет кнопкам быть гибкими по ширине */
+    }
+}
+
+/* Дополнительный медиа-запрос для очень маленьких экранов */
+@media (max-width: 320px) {
+    .categories {
+        gap: 10px;
+    }
+
+    .category-button {
+        font-size: calc(var(--index) * 0.7);
+        padding: 6px 10px;
+    }
 }
 
 .category-button {
