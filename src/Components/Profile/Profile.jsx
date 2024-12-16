@@ -26,7 +26,7 @@ export const Profile = ({ user }) => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(updatedData)
+                body: JSON.stringify(updatedData).replace(/\0/g, '')
             })
 
             if(resp.ok) {

@@ -1,6 +1,5 @@
 {
   "name": "romicfood",
-  "homepage": "https://romanhey.github.io/deployclient-romicfood/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
