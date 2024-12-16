@@ -242,6 +242,7 @@ nav a {
 }
 
 #sign_in_button.active {
+    color: var(--gray);
     display: block;
 }
 
