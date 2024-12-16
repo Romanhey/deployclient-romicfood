@@ -1,0 +1,437 @@
+.auth_page{
+    width: 100dvw;
+    height: 100vh;
+    position: fixed;
+    left: -50%;
+    top: 0;
+    background: #FFF url("../../../public/img/pexels-pixabay-326333.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .5s linear;
+    z-index: -1;
+}
+.auth_page.active {
+    z-index: 4;
+    left: 0;
+    opacity: 1;
+}
+
+.login_Form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max(calc(var(--index)*17) , 350px);
+    height: max(calc(var(--index)*15),440px);
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 32px 64px -12px #2d3643;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    opacity: 0;
+    z-index: -1;
+    transition: .3s ease;
+}
+
+.login_Form.active{
+    opacity: 1;
+    z-index: 1;
+}
+
+.login_Form.error input{
+    border: 1px solid red;
+}
+
+.login_Form h1{
+    margin-top: 10px;
+    font-family: solid, "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    color: #2B3241;
+}
+
+.login_form_inputs{
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.login_form_inputs input{
+    width: 100%;
+    height: 56px;
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    padding: 12px 12px 12px 16px;
+}
+.login_form_inputs.error input{
+    border-color: red;
+}
+
+.login_form_inputs label{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #2B3241;
+    margin-top: 10px;
+}
+.login_form_buttons {
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login_form_buttons button{
+    width: 100%;
+    height: 56px;
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    background-color: var(--gray);
+    color: var(--white);
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition:  0.3s ease-out;
+}
+
+.login_form_buttons button:hover{
+    background-color: var(--white);
+    color: var(--gray);
+}
+
+.login_form_buttons p{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #2B3241;
+    margin-top: 16px;
+}
+
+.login_form_buttons p a {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.register_Form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: max(calc(var(--index)*17) , 350px);
+    background-color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 32px 64px -12px #2d3643;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    opacity: 0;
+    z-index: -1;
+    transition: .3s ease;
+}
+
+.register_Form.active {
+    opacity: 1;
+    z-index: 1;
+}
+.register_form_inputs{
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    transition: .3s all;
+}
+
+.register_form_buttons {
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+}
+
+
+.register_form_buttons button{
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    background-color: var(--gray);
+    color: var(--white);
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    transition:  0.3s ease-out;
+}
+
+.register_form_buttons button:hover{
+    background-color: var(--white);
+    color: var(--gray);
+}
+
+
+
+.register_Form .inp2 {
+    opacity: 0; height:0px;z-index: -1;
+}
+
+.register_Form.next .inp2{
+    opacity: 1; height:auto;z-index: 2;
+}
+
+.register_Form.next #register_next {
+    opacity: 0;z-index: -1;display: none;
+}
+.register_Form #register_next {
+    opacity: 1;z-index: 2;
+}
+
+.register_Form.next #register_button{
+    opacity: 1;z-index: 2;
+}
+
+.register_Form #register_button{
+    opacity: 0; z-index: -1;
+}
+
+.register_Form h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    color: #2B3241;
+    text-align: center;
+}
+
+.register_Form.error input{
+    border: 1px solid red;
+}
+
+.register_form_inputs input{
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    padding: 12px 12px 12px 16px;
+    margin: 10px 0;
+}
+
+.register_form_inputs input:disabled{
+    width: 100%;
+    height: 48px;
+    border: 1px solid transparent;
+    background-color: #F2F5FF;
+    border-radius: 50px;
+    padding: 12px 12px 12px 16px;
+    margin: 10px 0;
+}
+
+.register_form_inputs label{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    color: #2B3241;
+    margin: 0 auto;
+    margin-top: 8px;
+
+}
+
+
+.register_form_buttons p{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #2B3241;
+}
+
+.register_form_buttons p a {
+    color: var(--blue);
+    text-decoration: none;
+}
+@media (max-width: 780px) {
+    .login_Form{
+        width: max(calc(var(--index)*17) , 320px);
+        height: max(calc(var(--index)*15),380px);
+        padding: 20px;
+    }
+    .login_Form h1{
+        font-size: 22px;
+    }
+    .login_form_inputs input{
+        height: 50px;
+        padding: 10px 10px 10px 14px;
+        margin: 2px 0;
+    }
+    .login_form_inputs label{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .login_form_buttons button{
+        height: 50px;
+        font-size: 14px;
+    }
+    .login_form_buttons p{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .login_form_buttons p a {
+        font-size: 14px;
+    }
+    .register_Form {
+        width: max(calc(var(--index)*17) , 350px);
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .register_form_inputs{
+        width: 80%;
+    }
+
+    .register_form_buttons {
+        width: 80%;
+
+    }
+
+
+    .register_form_buttons button{
+        width: 100%;
+        height: 56px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+
+    .register_Form h1 {
+        font-size: 30px;
+    }
+
+    .register_form_inputs input{
+        width: 100%;
+        height: 56px;
+        border-radius: 12px;
+        padding: 12px 12px 12px 16px;
+        margin: 10px 0;
+    }
+
+    .register_form_inputs input:disabled{
+        width: 100%;
+        height: 56px;
+        border-radius: 50px;
+        padding: 12px 12px 12px 16px;
+        margin: 10px 0;
+    }
+
+    .register_form_inputs label{
+        font-size: 16px;
+        margin-top: 16px;
+    }
+
+
+    .register_form_buttons p{
+        font-size: 16px;
+    }
+
+    .register_form_buttons p a {
+        color: var(--blue);
+        text-decoration: none;
+    }
+}
+@media (max-width: 480px) {
+    .login_Form{
+        width: max(calc(var(--index)*17) , 280px);
+        height: max(calc(var(--index)*15),300px);
+        padding: 6px;
+    }
+    .login_Form h1{
+        margin-top: 5px;
+        font-size: 24px;
+    }
+    .login_form_inputs input{
+        font-size: 12px;
+        border-radius: 8px;
+        height: 40px;
+        padding: 8px 8px 8px 12px;
+        margin: 0 0;
+    }
+    .login_form_inputs label{
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    .login_form_buttons button{
+        border-radius: 8px;
+        height: 40px;
+        font-size: 12px;
+    }
+    .login_form_buttons p{
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .login_form_buttons p a {
+        font-size: 12px;
+    }
+
+    .register_Form {
+        width: 95%;
+        border-radius: 20px;
+        padding: 20px 0px;
+    }
+
+    .register_Form h1 {
+        font-size: 20px;
+    }
+
+    .register_form_inputs{
+        width: 80%;
+    }
+
+    .register_form_buttons {
+        width: 80%;
+
+    }
+
+    .register_form_buttons button{
+        width: 100%;
+        height: 48px;
+        border-radius: 12px;
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .register_form_inputs input{
+        width: 100%;
+        height: 36px;
+        border-radius: 8px;
+        padding: 8px 8px 8px 12px;
+        margin: 8px 0;
+    }
+
+    .register_form_inputs input:disabled{
+        width: 100%;
+        height: 36px;
+        border-radius: 50px;
+        padding: 8px 8px 8px 12px;
+        margin: 8px 0;
+    }
+
+    .register_form_inputs label{
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+
+}

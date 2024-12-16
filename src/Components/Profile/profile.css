@@ -1,0 +1,310 @@
+/* Общий стиль страницы профиля */
+
+.profile-page {
+    background-image: url('../../../public/img/pexels-fwstudio-33348-164005.jpg'); /* Путь к вашей картинке */
+    background-size: cover; /* Растянуть картинку по всему экрану */
+    background-position: center; /* Центрировать картинку */
+    background-repeat: no-repeat; /* Отключить повторение картинки */
+    min-height: 100vh; /* Минимальная высота на весь экран */
+    padding: 20px; /* Отступы для контента */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent; /* Убираем белый фон, если есть изображение */
+    font-family: 'Poppins', sans-serif;
+    color: var(--gray, #333); /* Темно-серый текст */
+    overflow-y: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+
+/* Заголовок профиля */
+.profile-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gray, #333); /* Темно-серый фон */
+    padding: 15px 20px;
+    border-radius: 12px;
+    color: var(--white, #fff); /* Белый текст */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Легкая тень */
+}
+
+.profile-header h1 {
+    font-size: 2rem; /* Установим фиксированный размер */
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Кнопка "Редактировать" */
+.edit-button {
+    background-color: var(--white, #ffffff); /* Белая кнопка */
+    color: var(--gray, #333); /* Темно-серый текст */
+    border: 2px solid var(--white); /* Темно-серая рамка */
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Плавный эффект */
+}
+
+.edit-button:hover {
+    background-color: var(--gray, #333); /* Кнопка становится темно-серой */
+    color: var(--white, #fff); /* Текст становится белым */
+}
+
+.profile-main-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 5px;
+    width: 100%;
+    max-width: 600px;
+
+}
+
+.info-row {
+    display: flex;
+    gap: 5px;
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+/* Название поля */
+.info-label {
+    flex: 0 0 150px; /* Фиксированная ширина для метки */
+    padding: 10px;
+    border: 2px solid var(--gray); /* Рамка вокруг метки */
+    border-radius: 8px;
+    background-color: #f0f0f0; /* Светло-серый фон для метки */
+    font-weight: bold;
+    text-align: left; /* Текст по центру метки */
+    color: var(--gray); /* Цвет текста метки */
+}
+
+/* Значение поля */
+.info-value {
+    flex: 1; /* Растягивается, занимая оставшееся пространство */
+    padding: 10px;
+    border: 2px solid var(--gray); /* Рамка вокруг значения */
+    border-radius: 8px;
+    background-color: var(--white); /* Белый фон для значения */
+    text-align: left; /* Текст выравнивается по левому краю */
+    color: #333; /* Цвет текста значения */
+}
+.save-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.save-button {
+    background-color: var(--gray, #28a745); /* Зеленая кнопка */
+    color: var(--white, #fff); /* Белый текст */
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Плавный эффект */
+    border: 2px solid var(--gray);
+}
+
+.save-button:hover {
+    background-color: var(--white, #218838); /* Темно-зеленая кнопка */
+    color: var(--gray);
+}
+
+/* Секция "Мои заказы" */
+.orders-section {
+    font-size: 1rem;
+    margin-top: 40px; /* Отступ сверху */
+    padding: 20px;
+    border: 2px solid var(--gray, #333); /* Тёмно-серая рамка */
+    border-radius: 12px;
+    background-color: var(--white); /* Белый фон */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+    position: relative; /* Используем для абсолютного позиционирования */
+    width: 100%; /* Задаем ширину блока */
+    max-width: 600px; /* Максимальная ширина блока */
+    left: 0; /* Сдвигаем блок влево */
+}
+
+.orders-section h2 {
+    font-size: 1.2rem; /* Установим размер заголовка */
+    margin-bottom: 15px;
+    color: var(--gray, #333); /* Тёмно-серый цвет */
+}
+
+.orders-section ul {
+    list-style: none; /* Убираем стандартные маркеры списка */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Расстояние между элементами списка */
+    text-align: left;
+    background-color: var(--white);
+}
+
+.orders-section li {
+    font-size: 1rem; /* Установим размер текста */
+    color: var(--gray, #333); /* Тёмно-серый текст */
+}
+
+
+/* Кнопка выхода */
+.logout-section {
+    margin-top: 40px; /* Отступ сверху */
+    display: flex;
+    justify-content: center; /* Центрируем кнопку */
+}
+
+.logout-button {
+    background-color: var(--gray, #333); /* Тёмно-серая кнопка */
+    color: var(--white, #fff); /* Белый текст */
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem; /* Установим размер текста */
+    font-weight: bold;
+    transition: all 0.3s ease; /* Плавный эффект */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между иконкой и текстом */
+}
+
+.logout-button:hover {
+    background-color: var(--white, #fff); /* Белая кнопка при наведении */
+    color: var(--gray, #333); /* Тёмно-серый текст */
+    border: 2px solid var(--gray, #333); /* Добавляем рамку */
+}
+
+.logout-button .icon {
+    font-size: 1.2rem; /* Размер иконки */
+}
+/* Стили для input */
+input {
+    width: 100%; /* Поля ввода занимают всю доступную ширину */
+    padding: 10px; /* Внутренний отступ для удобного ввода текста */
+    border: 2px solid var(--gray, #333); /* Темно-серая рамка */
+    border-radius: 8px; /* Скругленные углы */
+    font-size: 1rem; /* Размер шрифта */
+    color: var(--gray, #333); /* Цвет текста */
+    background-color: var(--white, #fff); /* Белый фон */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    outline: none; /* Убираем стандартное выделение */
+    transition: all 0.3s ease; /* Плавный переход для эффектов */
+}
+
+/* Стили для input при фокусе */
+input:focus {
+    border-color: var(--blue, #007bff); /* Меняем цвет рамки на синий при фокусе */
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3); /* Подсветка при фокусе */
+    background-color: #f0f8ff; /* Светло-голубой фон */
+}
+
+/* Стили для placeholder */
+input::placeholder {
+    color: var(--gray, #666); /* Цвет текста placeholder */
+    font-style: italic; /* Косой шрифт для стилизации */
+    opacity: 0.8; /* Легкая прозрачность */
+}
+
+/* Адаптивность */
+/* Адаптивность для ширины экрана до 768px */
+@media (max-width: 768px) {
+
+    .profile-page {
+        flex-direction: column; /* Колонка вместо строки */
+        padding: 15px; /* Уменьшенные отступы */
+    }
+
+    .profile-header h1 {
+        font-size: 1.3rem; /* Уменьшенный размер шрифта */
+        text-align: center;
+    }
+
+    .edit-button {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+    /* Основная информация о профиле */
+    .profile-main-info {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    /* Секция "Мои заказы" */
+    .orders-section {
+
+        margin-top: 20px; /* Уменьшенный отступ сверху */
+        padding: 15px; /* Уменьшенный внутренний отступ */
+    }
+
+    .orders-section h2 {
+        font-size: 1.2rem; /* Уменьшенный размер шрифта */
+    }
+
+    .orders-section ul {
+        gap: 5px; /* Уменьшаем расстояние между элементами списка */
+    }
+
+    /* Секция выхода */
+    .logout-section {
+        margin-top: 20px; /* Уменьшенный отступ сверху */
+    }
+
+    .logout-button {
+        font-size: 1rem; /* Сохраняем читаемый размер текста */
+        padding: 10px 15px; /* Уменьшаем внутренний отступ */
+        width: 100%; /* Растягиваем кнопку на всю ширину */
+        max-width: 400px; /* Устанавливаем максимальную ширину */
+    }
+
+    /* Поля ввода */
+    input {
+        width: 100%; /* Растягиваем на всю ширину */
+        padding: 10px; /* Сохраняем удобный отступ */
+        font-size: 1rem; /* Удобный размер текста */
+    }
+
+    input:focus {
+        border-color: var(--blue, #007bff); /* Оставляем выделение */
+        background-color: #f0f8ff;
+    }
+}
+@media (max-width: 480px) {
+    .profile-page {
+        padding: 5px;
+    }
+    .info-label{
+        flex: 0 0 100px;
+        padding: 8px ;
+    }
+    .info-value {
+        flex: 0 0 1fr;
+    }
+    .profile-main-info{
+        flex-direction: column;
+    }
+    .orders-section li {
+        font-size: 0.8rem; /* Установим размер текста */
+    }
+    .edit-button,
+    .save-button,
+    .logout-button {
+        font-size: 0.6rem;
+    }
+}
+
+
+
+
+

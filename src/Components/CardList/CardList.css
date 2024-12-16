@@ -1,0 +1,173 @@
+/* Основной стиль для страницы */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-image: linear-gradient(to bottom, #ffffff, #f8f8f8); /* Легкий градиент */
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Обертка */
+.page-container {
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Заголовок */
+.menu-title {
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Поговорка */
+.menu-quote {
+    text-align: center;
+    font-style: italic;
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.menu-quote .translation {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Контейнер управления */
+.menu-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+/* Категории */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.category-button {
+    padding: 10px 15px;
+    background-color: var(--white);
+    color: var(--gray);
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-button:hover {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.category-button.active {
+    background-color: var(--gray);
+    color: var(--white);
+    border: 1px solid var(--gray);
+    font-weight: bold;
+}
+
+.category-button.active::before {
+    content: "✓";
+    margin-right: 8px;
+}
+
+/* Сортировка */
+.sort-controls {
+    position: relative;
+}
+
+.sort-menu-button {
+    font-size: 14px;
+    padding: 10px 15px;
+    background-color: var(--white);
+    color: var(--gray);
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-menu-button:hover {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+.sort-menu-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    overflow: hidden;
+}
+
+.sort-option {
+    font-size: 12px;
+    padding: 8px 10px;
+    color: var(--gray);
+    background-color: var(--white);
+    border: none;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.sort-option:hover,
+.sort-option.active {
+    background-color: var(--gray);
+    color: var(--white);
+}
+
+/* Список продуктов */
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 10px;
+    }
+    .menu-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 2px;
+    }
+    .category-button {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+
+    .sort-menu-button {
+        font-size: 0.8rem;
+    }
+}
