@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/deployclient-romicfood/static/css/main.48185bfb.css",
-    "main.js": "/deployclient-romicfood/static/js/main.dc1e422e.js",
+    "main.css": "/deployclient-romicfood/static/css/main.8f398e45.css",
+    "main.js": "/deployclient-romicfood/static/js/main.5d38eb36.js",
     "static/media/pexels-pixabay-326333.jpg": "/deployclient-romicfood/static/media/pexels-pixabay-326333.ee7140d7526eababf903.jpg",
     "static/media/pexels-fwstudio-33348-164005.jpg": "/deployclient-romicfood/static/media/pexels-fwstudio-33348-164005.825190cd9083679b7d8a.jpg",
     "static/media/pexels-chanwalrus-958545.jpg": "/deployclient-romicfood/static/media/pexels-chanwalrus-958545.ae88a0704b6edbb258b4.jpg",
     "index.html": "/deployclient-romicfood/index.html",
-    "main.48185bfb.css.map": "/deployclient-romicfood/static/css/main.48185bfb.css.map",
-    "main.dc1e422e.js.map": "/deployclient-romicfood/static/js/main.dc1e422e.js.map"
+    "main.8f398e45.css.map": "/deployclient-romicfood/static/css/main.8f398e45.css.map",
+    "main.5d38eb36.js.map": "/deployclient-romicfood/static/js/main.5d38eb36.js.map"
   },
   "entrypoints": [
-    "static/css/main.48185bfb.css",
-    "static/js/main.dc1e422e.js"
+    "static/css/main.8f398e45.css",
+    "static/js/main.5d38eb36.js"
   ]
 }
