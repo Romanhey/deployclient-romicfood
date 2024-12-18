@@ -18,7 +18,7 @@ nav {
     position: fixed;
     padding: 0 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    z-index: 10;
 }
 
 
@@ -242,6 +242,7 @@ nav a {
 }
 
 #sign_in_button.active {
+    color: var(--gray);
     display: block;
 }
 

@@ -10,6 +10,7 @@ export const Profile = ({ user }) => {
     const [editAddress, setEditAddress] = useState(user.address || "");
     const [editPassword, setEditPassword] = useState( "");
     const [isEdit, setIsEdit] = useState(false);
+    const navigate = useNavigate(); // Используем navigate для перехода
 
     const handleSave = async () => {
         // Пример сохранения обновленных данных
@@ -43,14 +44,14 @@ export const Profile = ({ user }) => {
     let [orders, setOrders] = React.useState([]);
 
     if (user?.userId == null) {
-        history("/auth");
+        navigate("/auth");
     }
 
-    React.useEffect( () => {
+    React.useEffect(() => {
         if (user?.userId == null) {
-            history("/auth");
+            navigate("/auth");
         }
-         getOrders();
+        getOrders();
     }, []);
 
     let getOrders = async () => {
@@ -81,12 +82,19 @@ export const Profile = ({ user }) => {
         <div className="profile-page">
             <div className="profile-header">
                 <h1>Профиль</h1>
-                <button
+                <div><button
                     className="edit-button"
                     onClick={() => setIsEdit(!isEdit)}
                 >
                     {isEdit ? "Отменить" : "Редактировать"}
                 </button>
+                <button
+                    className="home-button"
+                    onClick={() => navigate("/")}
+                >
+                    На главную
+                </button>
+                </div>
             </div>
 
             <div className="profile-main-info">
@@ -207,9 +215,9 @@ export const Profile = ({ user }) => {
 
 
             {/* Кнопка выхода */}
-            <div className="logout-section">
+            {/*<div className="logout-section">
                 <button className="logout-button">Выйти из аккаунта</button>
-            </div>
+            </div>*/}
         </div>
     );
 };

@@ -53,7 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border-radius: 8px;
 }
 
 .product-menu__image img {

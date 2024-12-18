@@ -15,10 +15,11 @@
     background-color: transparent; /* Убираем белый фон, если есть изображение */
     font-family: 'Poppins', sans-serif;
     color: var(--gray, #333); /* Темно-серый текст */
-    overflow-y: auto;
+    overflow-y: hidden;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    z-index: 11;
 }
 
 
@@ -52,6 +53,24 @@
     font-size: 1rem;
     font-weight: bold;
     transition: all 0.3s ease; /* Плавный эффект */
+}
+.home-button {
+    background-color: var(--blue, #007bff);
+    color: var(--white, #fff);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--blue, #007bff);
+
+}
+
+.home-button:hover {
+    background-color: var(--white, #fff);
+    color: var(--blue, #007bff);
 }
 
 .edit-button:hover {
