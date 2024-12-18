@@ -108,7 +108,7 @@ function CardList({ targetRef, searchText, cart, products, setProductsCardList, 
 
             {/* Контролы сортировки и категорий */}
             <div className="menu-controls">
-                <div className="sort-controls" ref={sortRef}>
+                <div className="sort-controls">
                     <button
                         className="sort-menu-button"
                         onClick={() => setIsSortMenuOpen(!isSortMenuOpen)}
@@ -117,7 +117,7 @@ function CardList({ targetRef, searchText, cart, products, setProductsCardList, 
                     </button>
                     {isSortMenuOpen && (
                         <div className="sort-menu-dropdown"
-
+                            ref={sortRef}
                         >
                             <button className="sort-option" onClick={resetSorting}>
                                 Сбросить

@@ -33,14 +33,10 @@ function ProductMenu({setProductMenu,product,isAdmin}) {
                     {product?.productName}
                 </div>
                 <div className="product-menu__price">
-<<<<<<< Updated upstream
-                    {product?.price} BYN
-=======
-                    Цена: {product?.price} BYN
->>>>>>> Stashed changes
+                    Цена: {product?.price} сом
                 </div>
                 <div className="product-menu__category">
-                    {product?.category?.categoryName}
+                    Категория: {product?.category?.categoryName}
                 </div>
                 <div className="product-menu__description">
                     Описание: {product?.productDescription}

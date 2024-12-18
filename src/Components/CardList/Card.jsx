@@ -19,7 +19,7 @@ function Card({ product, addProductToCard, setProductMenu }) {
 
             <div className="card-content">
                 <h2 className="card-title">{product.productName}</h2>
-                <p className="card-price">{product.price} BYN</p>
+                <p className="card-price">${product.price}</p>
 
                 <button
                     className="add-to-cart"
