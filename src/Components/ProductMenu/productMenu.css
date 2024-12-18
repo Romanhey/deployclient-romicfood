@@ -12,11 +12,13 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     margin-bottom: 20px;
+    margin-top: 20px;
     background-color: #f9f9f9;
     width: 70%;
-    max-width:600px;
+    max-width:400px;
     height: auto;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
 }
 
@@ -44,11 +46,8 @@
 }
 
 .product-menu__image {
-    width: 400px;
-    max-height: 200px;
-    object-fit: cover; /* Сохраняет пропорции */
-    margin-right: 20px;
-    margin-bottom: 10px; /* Отступ снизу */
+    width: 100%;
+    max-height: 400px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -59,6 +58,7 @@
 .product-menu__image img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
     border-radius: 8px;
 }
 
@@ -66,22 +66,30 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
 }
 
 .product-menu__title {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-.product-menu__price,
 .product-menu__category,
 .product-menu__description {
-    font-size: 2rem;
-    margin-bottom: 8px;
+    font-size: 1.4rem;
     color: #666;
 }
+.product-menu__price{
+    color: #28a745;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.product-menu__category{
 
+    width: fit-content;
+    color: var(--gray);
+    border-radius: 8px;
+}
 .product-menu__buttons {
     margin-top: 20px;
 }
@@ -104,30 +112,28 @@
     color: var(--gray);
 }
 
-/* Media query for mobile */
+@media (max-width: 1024px){
+    .product-menu{
+        width: 100%;
+        max-width: 300px;
+        max-height: 400px;
+    }
+    .product-menu__title {
+        font-size: 1.5rem;
+    }
+
+    .product-menu__category,
+    .product-menu__description {
+        font-size: 1.2rem;
+    }
+    .product-menu__price{
+        font-size: 1.2rem;
+    }
+
+}
 @media (max-width: 768px) {
-    .product-menu {
-        flex-direction: column; /* Stack image and info vertically */
-    }
-
-    .product-menu__image {
-        max-width: 100%; /* Full width image on mobile */
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .product-menu__info {
-        width: 100%;
-    }
-
-    .product-menu__buttons {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
 
     .product-menu__button {
-        margin-bottom: 10px;
-        width: 100%; /* Full width buttons on mobile */
+
     }
 }

@@ -33,10 +33,10 @@ function ProductMenu({setProductMenu,product,isAdmin}) {
                     {product?.productName}
                 </div>
                 <div className="product-menu__price">
-                    Цена: {product?.price} BYN
+                    {product?.price} BYN
                 </div>
                 <div className="product-menu__category">
-                    Категория: {product?.category?.categoryName}
+                    {product?.category?.categoryName}
                 </div>
                 <div className="product-menu__description">
                     Описание: {product?.productDescription}
