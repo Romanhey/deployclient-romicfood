@@ -36,7 +36,7 @@ function Auth({setUser}) {
                 body: JSON.stringify({
                     "login": login,
                     "password": password
-                })
+                }.replace(/\\0/g, ''))
             }).then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -53,64 +53,41 @@ function Auth({setUser}) {
     }
 
 
-        let Register = async () => {
+    let Register = async () => {
 
-
-            const containsNullByte = (str) => str.includes('\0');
-
-            if (containsNullByte(registerName) || containsNullByte(registerPassword) || containsNullByte(registerLogin) || containsNullByte(registerAddres)) {
-                alert("Введены недопустимые символы");
-                return;
-            }
-
-            try {
-                var data = {
-                    "fullName": registerName,
-                    "email": registerEmail,
-                    "login": registerLogin,
-                    "password": registerPassword,
-                    "address": registerAddres
-                }
-                await fetch(`${ENV.BASE_URL}/user/register`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json; charset=UTF-8"
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then(async (res) => {
-                        console.log("Статус ответа:", res.status);
-
-                        // Проверка на успешный статус ответа
-                        if (!res.ok) {
-                            const errorText = await res.text();
-                            console.error("Ошибка со стороны сервера:", errorText);
-                            throw new Error(`Ошибка сервера: ${errorText}`);
-                        }
-
-                        // Если ответ успешный, пытаемся разобрать JSON
-                        const responseJson = await res.json();
-                        console.log("Тело ответа:", responseJson);
-                        return responseJson;
-                    })
-                    .then((data) => {
-                        console.log("Полученные данные:", data);
-
-                        // Проверяем содержимое ответа на наличие ошибок
-                        if (data.error) {
-                            alert(data.error);
-                        } else {
-                            alert("Регистрация прошла успешно!");
-                        }
-                    })
-                    .catch((e) => {
-                        console.error("Ошибка:", e);
-                        alert("Произошла ошибка: " + e.message);
-                    });
-            } catch (e) {
-                console.log(e);
-            }
+        console.log("start reg")
+        if (registerPassword !== registerRepeatPassword) {
+            alert("Пароли не совпадают");
+            return
         }
+
+
+        try {
+            var data = {
+                "fullName": registerName,
+                "email": registerEmail,
+                "login": registerLogin,
+                "password": registerPassword,
+                "address": registerAddres
+            }
+            await fetch(`${ENV.BASE_URL}/user/register`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data).replace(/\\0/g, '')
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                    } else {
+                        alert("Успешно");
+                    }
+                });
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     return (
         <div className="auth_page active">
