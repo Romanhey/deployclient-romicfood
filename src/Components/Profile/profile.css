@@ -1,10 +1,8 @@
 /* Общий стиль страницы профиля */
 
 .profile-page {
-    background-image: url('../../../public/img/pexels-fwstudio-33348-164005.jpg'); /* Путь к вашей картинке */
-    background-size: cover; /* Растянуть картинку по всему экрану */
-    background-position: center; /* Центрировать картинку */
-    background-repeat: no-repeat; /* Отключить повторение картинки */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../public/img/pexels-fwstudio-33348-164005.jpg") no-repeat center  center;
     min-height: 100vh; /* Минимальная высота на весь экран */
     padding: 20px; /* Отступы для контента */
     position: absolute;
@@ -12,7 +10,6 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    background-color: transparent; /* Убираем белый фон, если есть изображение */
     font-family: 'Poppins', sans-serif;
     color: var(--gray, #333); /* Темно-серый текст */
     overflow-y: hidden;
@@ -55,23 +52,22 @@
     transition: all 0.3s ease; /* Плавный эффект */
 }
 .home-button {
-    background-color: var(--blue, #007bff);
-    color: var(--white, #fff);
-    padding: 10px 20px;
+    background-color: var(--yellow, #ffcc00); /* Use yellow as the background color */
+    color: var(--gray);
+    padding: 10px 23px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    margin-left: 10px;
+    margin-left: 15px;
     transition: all 0.3s ease;
-    border: 2px solid var(--blue, #007bff);
-
+    border: 2px solid var(--yellow, #ffcc00); /* Use yellow for the border */
 }
 
 .home-button:hover {
-    background-color: var(--white, #fff);
-    color: var(--blue, #007bff);
+    transform: scale(1.1);
 }
+
 
 .edit-button:hover {
     background-color: var(--gray, #333); /* Кнопка становится темно-серой */
@@ -298,6 +294,12 @@ input::placeholder {
         border-color: var(--blue, #007bff); /* Оставляем выделение */
         background-color: #f0f8ff;
     }
+    .home-button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        margin-left: 10px;
+
+    }
 }
 @media (max-width: 480px) {
     .profile-page {
@@ -320,6 +322,12 @@ input::placeholder {
     .save-button,
     .logout-button {
         font-size: 0.6rem;
+    }
+    .home-button {
+        padding: 7px 15px;
+        font-size: 0.7rem;
+        margin-left: 8px;
+
     }
 }
 

@@ -6,7 +6,7 @@
     top: 50%;
     left: 50%;
     display: flex;
-    flex-direction: column; /* Image on the left, info on the right */
+    flex-direction: column;
     align-items: center;
     padding: 15px;
     border: 1px solid #e0e0e0;
@@ -85,10 +85,9 @@
     font-weight: bold;
 }
 .product-menu__category{
-
+    border-bottom: 2px solid var(--gray);
     width: fit-content;
     color: var(--gray);
-    border-radius: 8px;
 }
 .product-menu__buttons {
     margin-top: 20px;

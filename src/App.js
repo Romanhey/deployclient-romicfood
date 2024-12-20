@@ -4,7 +4,6 @@ import Auth from "./Components/Auth/Auth";
 import {Route, Routes} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
 import {Profile} from "./Components/Profile/Profile";
-import Card from "./Components/CardList/Card";
 import CardList from "./Components/CardList/CardList";
 import Cart from "./Components/Cart/Cart";
 import Nav from "./Components/Nav/Nav";
@@ -12,6 +11,7 @@ import {ENV} from "./Share/share";
 import ProductMenu from "./Components/ProductMenu/ProductMenu";
 import AdminMenu from "./Components/Admin/AdminMenu";
 import ErrorPage from "./Components/ErrorPage/ErrorPage";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
     const [user, setUser] = useState({
@@ -63,6 +63,12 @@ function App() {
             GetAllProducts();
     }, []);
 
+    const footerRef = useRef(null);
+    const scrollToFooter = () => {
+        if(footerRef.current){
+            footerRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    };
   return (
     <div className="App">
         <Nav
@@ -72,6 +78,7 @@ function App() {
             setSearchText={setSearchText}
             searchText={searchText}
             scroll={handleInputChange}
+            scrollToFooter={scrollToFooter}
         />
 
         <Routes>
@@ -92,9 +99,10 @@ function App() {
                         setProductMenu={setProductMenu}
                         isAdmin={user.isAdmin}
                     />
+                    <Footer
+                        ref={footerRef}
+                    />
 
-                    {//TODO: contacts
-                    }
                 </>
             } />
             <Route path="/auth" element={<Auth setUser={setUser}/>} />

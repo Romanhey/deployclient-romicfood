@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import './header.css';
-import { NavLink } from "react-router-dom";
-import { FiShoppingCart, FiTruck } from "react-icons/fi"; // Добавляем иконку для логотипа
-import { TbTruckDelivery } from "react-icons/tb";
-import Cart from "../Cart/Cart";
 
 function Header({ isAuth }) {
 

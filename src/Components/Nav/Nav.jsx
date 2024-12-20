@@ -5,7 +5,7 @@ import {FiShoppingCart} from "react-icons/fi";
 import {NavLink, useNavigate} from "react-router-dom";
 import "./../Header/header.css"
 
-function Nav({scroll,isAuth,CartProductsCount,setSearchText,searchText}) {
+function Nav({ scrollToFooter,scroll,isAuth,CartProductsCount,setSearchText,searchText}) {
 
     let history = useNavigate();
 
@@ -14,13 +14,22 @@ function Nav({scroll,isAuth,CartProductsCount,setSearchText,searchText}) {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+    const handleMenuItemClick = () => {
+        setIsMenuOpen(false); // Закрываем меню
+    };
 
     return (
         <nav>
+
+                <NavLink
+                    to="/"
+                >
             <div className="nav_logo">
-                <TbTruckDelivery/> {/* Используем иконку FiTruck для логотипа */}
-                <span className="company_name">RomicFood</span> {/* Название компании */}
+                    <TbTruckDelivery/> {/* Используем иконку FiTruck для логотипа */}
+                    <span className="company_name">RomicFood</span> {/* Название компании */}
+
             </div>
+                </NavLink>
             <div className="navigation">
                 <div className="nav_search">
                     <input
@@ -35,14 +44,25 @@ function Nav({scroll,isAuth,CartProductsCount,setSearchText,searchText}) {
                     <img src={`${process.env.PUBLIC_URL}/img/icons-reach.svg`} alt="search icon"/>
                 </div>
                 <div className={`nav_buttons ${isMenuOpen ? 'open' : ''}`}>
-                    <a href="">Доставка</a>
-                    <a href="">О нас</a>
-                    <a href="">Контакты</a>
+                    <a href="" onClick={handleMenuItemClick}>Доставка</a>
+                    <a href="" onClick={(e)=>{
+                        e.preventDefault();
+                        handleMenuItemClick();
+                        scrollToFooter();
+                    }}>О нас</a>
+                    <a href="" onClick= {(e) =>{
+                        e.preventDefault();
+                        scrollToFooter();
+                        handleMenuItemClick();
+                    }}
+                        >Контакты
+                    </a>
                     <div className="nav_profile">
                         <NavLink
                             to="/profile"
                             id="profile_button"
                             className={isAuth ? "active" : ""}
+                            onClick={handleMenuItemClick}
                         >
                             Профиль
                         </NavLink>
@@ -50,6 +70,7 @@ function Nav({scroll,isAuth,CartProductsCount,setSearchText,searchText}) {
                             to="/auth"
                             id="sign_in_button"
                             className={!isAuth ? "active" : ""}
+                            onClick={handleMenuItemClick}
                         >
                             Войти
                         </NavLink>

@@ -22,6 +22,7 @@ html{
   --gray:#2C2C2C;
   --index: calc(1dvw + 1dvh);
   --blue: #007AFF;
+  --yellow: #ffcc00;
 }
 
 ::-webkit-scrollbar {
