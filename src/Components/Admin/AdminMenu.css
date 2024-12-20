@@ -14,6 +14,14 @@
 
 }
 
+.close{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    font-size: 48px;
+    transform: translateY(-25%);
+}
+
 .admin-menu h1 {
     text-align: center;
     color: #343a40;

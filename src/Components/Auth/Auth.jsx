@@ -36,7 +36,7 @@ function Auth({setUser}) {
                 body: JSON.stringify({
                     "login": login,
                     "password": password
-                })
+                }.replace(/\\0/g, ''))
             }).then(res => res.json())
                 .then(data => {
                     console.log(data);
@@ -101,6 +101,14 @@ function Auth({setUser}) {
                             alert(data.error);
                         } else {
                             alert("Регистрация прошла успешно!");
+                            setIsRegister(false);
+                            setIsSecondRegisterPage(false);
+                            setRegisterEmail("");
+                            setRegisterLogin("");
+                            setRegisterName("");
+                            setRegisterAddres("");
+                            setRegisterPassword("");
+                            setRegisterRepeatPassword("");
                         }
                     })
                     .catch((e) => {
